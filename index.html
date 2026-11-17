@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ing.Carlos Manuel Vásquez Martínez | Portafolio Profesional</title>
+<meta name="description" content="Portafolio profesional del ING. Carlos Manuel Vásquez Martínez: ciberseguridad, seguridad corporativa y tecnología.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#070D17;overflow-x:hidden}
+html{scroll-behavior:smooth}
+a{color:#5EEAD4}a:hover{color:#99F6E4}
+
+/* Animaciones Ciberseguridad & HUD */
+@keyframes gridmove{from{background-position:0 0,0 0}to{background-position:0 48px,48px 0}}
+@keyframes scanline{0%{top:-5%;opacity:0}15%{opacity:1}85%{opacity:1}100%{top:105%;opacity:0}}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinr{to{transform:rotate(-360deg)}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 12px rgba(94,234,212,0.15)}50%{box-shadow:0 0 28px rgba(94,234,212,0.4)}}
+@keyframes radarPing{0%{transform:scale(0.8);opacity:0.8}100%{transform:scale(2.2);opacity:0}}
+@keyframes glitchSkew{0%,100%{transform:skew(0deg)}20%{transform:skew(-2deg)}40%{transform:skew(2deg)}60%{transform:skew(-1deg)}80%{transform:skew(1deg)}}
+
+.cy-grid{animation:gridmove 8s linear infinite}
+.cy-scanner{position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#5EEAD4,transparent);box-shadow:0 0 15px #5EEAD4,0 0 30px #5EEAD4;animation:scanline 3.5s ease-in-out infinite;z-index:10;pointer-events:none}
+.cy-blink{animation:blink 1s step-end infinite}
+.cy-spin{animation:spin 20s linear infinite}
+.cy-spinr{animation:spinr 28s linear infinite}
+.cy-float{animation:floaty 5s ease-in-out infinite}
+.cy-glow{animation:pulseGlow 4s ease-in-out infinite}
+.cy-ping{animation:radarPing 2s cubic-bezier(0,0,0.2,1) infinite}
+
+/* Tarjetas interactivas */
+.cy-card{background:rgba(19,29,46,0.75);backdrop-filter:blur(10px);border:1px solid #1E2A3D;border-radius:12px;padding:28px;position:relative;overflow:hidden;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+.cy-card::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:2px;background:linear-gradient(90deg,transparent,#5EEAD4,transparent);transition:left .5s ease}
+.cy-card:hover{transform:translateY(-5px);border-color:#5EEAD4;box-shadow:0 10px 30px -10px rgba(94,234,212,0.25)}
+.cy-card:hover::before{left:100%}
+
+/* Esquinas HUD en Foto */
+.hud-corner{position:absolute;width:18px;height:18px;border-color:#5EEAD4;border-style:solid;z-index:12;pointer-events:none}
+.hud-tl{top:10px;left:10px;border-width:2px 0 0 2px}
+.hud-tr{top:10px;right:10px;border-width:2px 2px 0 0}
+.hud-bl{bottom:10px;left:10px;border-width:0 0 2px 2px}
+.hud-br{bottom:10px;right:10px;border-width:0 2px 2px 0}
+
+/* Botón PDF y Acciones */
+.btn-pdf{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:10px 16px;border-radius:8px;border:1px solid rgba(94,234,212,0.5);background:rgba(94,234,212,0.08);color:#5EEAD4;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;transition:all .25s ease}
+.btn-pdf:hover{background:#5EEAD4;color:#070D17;box-shadow:0 0 18px rgba(94,234,212,0.5)}
+
+/* Botones interactivos de Terminal */
+.term-btn{background:rgba(94,234,212,0.1);border:1px solid #5EEAD4;color:#5EEAD4;font-family:'JetBrains Mono',monospace;font-size:11px;padding:6px 12px;border-radius:4px;cursor:pointer;transition:all .2s ease}
+.term-btn:hover{background:#5EEAD4;color:#070D17;box-shadow:0 0 10px #5EEAD4}
+
+/* Cinta Marquee */
+.marquee-wrap{overflow:hidden;white-space:nowrap;border-top:1px solid #1E2A3D;border-bottom:1px solid #1E2A3D;background:rgba(11,19,32,0.9);padding:14px 0;position:relative}
+.marquee-track{display:inline-block;animation:marquee 25s linear infinite}
+.marquee-item{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:13px;color:#5EEAD4;margin:0 28px;letter-spacing:0.1em}
+
+.glitch-title:hover{animation:glitchSkew .3s ease-in-out;text-shadow:2px 0 #5EEAD4,-2px 0 #F43F5E}
+
+@media (prefers-reduced-motion:reduce){
+  .cy-grid,.cy-scanner,.cy-blink,.cy-spin,.cy-spinr,.cy-float,.cy-glow,.cy-ping,.marquee-track{animation:none}
+}
+</style>
+</head>
+<body>
+<div style="background: #070D17; color: #E6EDF5; font-family: Inter, system-ui, sans-serif; font-size: 16px; line-height: 1.6; min-height: 100vh">
+
+<!-- NAV -->
+<header style="border-bottom: 1px solid #1E2A3D; background: rgba(7,13,23,0.88); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100">
+<nav aria-label="Secciones" style="max-width: 1200px; margin: 0 auto; padding: 16px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#inicio" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #E6EDF5">
+<span class="cy-glow" style="width: 40px; height: 40px; border-radius: 10px; border: 1px solid #5EEAD4; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 14px; color: #5EEAD4; background: rgba(94,234,212,0.06)">CV</span>
+<div>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 16px; display: block; line-height: 1.1">Carlos M. Vásquez</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #5EEAD4; display: flex; align-items: center; gap: 6px; margin-top: 2px">
+<span style="position: relative; display: inline-flex; width: 8px; height: 8px">
+<span class="cy-ping" style="position: absolute; inset: 0; border-radius: 50%; background: #5EEAD4"></span>
+<span style="position: relative; width: 8px; height: 8px; border-radius: 50%; background: #5EEAD4"></span>
+</span>
+ONLINE // SECURE
+</span>
+</div>
+</a>
+<div style="display: flex; flex-wrap: wrap; gap: 4px 24px; font-family: 'JetBrains Mono', monospace; font-size: 13px">
+<a href="#sobre-mi" style="color: #A9B6C8; text-decoration: none; padding: 10px 0">01.Perfil</a>
+<a href="#formacion" style="color: #A9B6C8; text-decoration: none; padding: 10px 0">02.Formación</a>
+<a href="#certificaciones" style="color: #A9B6C8; text-decoration: none; padding: 10px 0">03.Certificados</a>
+<a href="#proyectos" style="color: #A9B6C8; text-decoration: none; padding: 10px 0">04.Proyectos</a>
+<a href="#contacto" style="color: #A9B6C8; text-decoration: none; padding: 10px 0">05.Contacto</a>
+</div>
+</nav>
+</header>
+
+<!-- HERO CON MATRIX CANVAS -->
+<section id="inicio" style="position: relative; overflow: hidden">
+<canvas id="matrixCanvas" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.22; pointer-events: none"></canvas>
+<div class="cy-grid" aria-hidden="true" style="position: absolute; inset: 0; background-image: linear-gradient(rgba(94,234,212,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(94,234,212,0.06) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none"></div>
+<div aria-hidden="true" style="position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 40%, rgba(7,13,23,0.1) 0%, #070D17 80%); pointer-events: none"></div>
+
+<div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 88px 32px 96px; display: flex; flex-wrap: wrap; gap: 64px; align-items: center">
+<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+<div style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: #5EEAD4; background: rgba(94,234,212,0.08); border: 1px solid rgba(94,234,212,0.25); padding: 6px 14px; border-radius: 6px; width: fit-content">
+<span>root@cvasquez:~# ./init_portfolio.sh</span><span class="cy-blink">█</span>
+</div>
+
+<h1 class="glitch-title" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(40px, 5.8vw, 76px); line-height: 1.03; letter-spacing: -0.02em; max-width: 14ch; cursor: default">Ing.Carlos Manuel Vásquez Martínez</h1>
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<span style="border: 1px solid #2A3A52; background: rgba(19,29,46,0.8); border-radius: 999px; padding: 6px 16px; font-size: 13px; font-family: 'JetBrains Mono', monospace; color: #5EEAD4">Ciberseguridad</span>
+<span style="border: 1px solid #2A3A52; background: rgba(19,29,46,0.8); border-radius: 999px; padding: 6px 16px; font-size: 13px; font-family: 'JetBrains Mono', monospace; color: #CBD5E1">Seguridad corporativa</span>
+<span style="border: 1px solid #2A3A52; background: rgba(19,29,46,0.8); border-radius: 999px; padding: 6px 16px; font-size: 13px; font-family: 'JetBrains Mono', monospace; color: #CBD5E1">Infraestructura &amp; Redes</span>
+</div>
+
+<p style="margin: 0; font-size: 18px; color: #A9B6C8; max-width: 620px">Profesional en seguridad corporativa y futuro Ingeniero en Ciberseguridad, enfocado en protección de activos digitales, continuidad de negocio y arquitectura tecnológica segura.</p>
+
+<div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px">
+<a href="mailto:carlosmanuel0403@gmail.com" class="cy-glow" style="background: #5EEAD4; color: #070D17; text-decoration: none; font-weight: 600; font-size: 15px; padding: 14px 26px; border-radius: 8px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px">
+<span>Iniciar Contacto</span>
+<span>&rarr;</span>
+</a>
+<a href="#proyectos" style="border: 1px solid #2A3A52; background: rgba(19,29,46,0.6); color: #E6EDF5; text-decoration: none; font-weight: 500; font-size: 15px; padding: 14px 26px; border-radius: 8px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Ver Proyectos</a>
+</div>
+
+<div style="display: flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #94A3B8; margin-top: 4px">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>
+<span>LOC: Santo Domingo Norte, República Dominicana</span>
+</div>
+</div>
+
+<!-- PHOTO HUD CON ESCÁNER LÁSER -->
+<div style="flex: 1 1 380px; min-width: 0; display: flex; justify-content: center">
+<div style="position: relative; width: 100%; max-width: 420px; padding: 28px; box-sizing: border-box">
+<div class="cy-spin" aria-hidden="true" style="position: absolute; inset: -4px; border: 1px dashed rgba(94,234,212,0.4); border-radius: 50%"></div>
+<div class="cy-spinr" aria-hidden="true" style="position: absolute; inset: 22px; border: 2px solid rgba(94,234,212,0.1); border-top-color: #5EEAD4; border-bottom-color: #5EEAD4; border-radius: 50%"></div>
+
+<div class="cy-float cy-glow" style="position: relative; aspect-ratio: 1 / 1; border-radius: 18px; overflow: hidden; border: 1px solid #5EEAD4; background: #131D2E">
+<div class="hud-corner hud-tl"></div>
+<div class="hud-corner hud-tr"></div>
+<div class="hud-corner hud-bl"></div>
+<div class="hud-corner hud-br"></div>
+<div class="cy-scanner"></div>
+<div style="position: absolute; top: 14px; left: 50%; transform: translateX(-50%); background: rgba(7,13,23,0.82); border: 1px solid rgba(94,234,212,0.4); padding: 3px 10px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #5EEAD4; z-index: 12; white-space: nowrap">
+ID: VERIFIED // CYBER_SEC
+</div>
+<img src="foto.jpg" alt="Carlos Manuel Vásquez Martínez" style="width: 100%; height: 100%; object-fit: cover; filter: contrast(1.05)">
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CINTA DE TECNOLOGÍAS (MARQUEE) -->
+<div class="marquee-wrap" aria-hidden="true">
+<div class="marquee-track">
+<span class="marquee-item">// CYBERSECURITY</span>
+<span class="marquee-item">// NETWORK ADMINISTRATION</span>
+<span class="marquee-item">// BUSINESS CONTINUITY (BCP/DRP)</span>
+<span class="marquee-item">// RISK MANAGEMENT</span>
+<span class="marquee-item">// CORPORATE SECURITY</span>
+<span class="marquee-item">// BACKEND &amp; DATABASES</span>
+<span class="marquee-item">// UML ARCHITECTURE</span>
+<span class="marquee-item">// AUTOMATION &amp; SCRIPTING</span>
+<span class="marquee-item">// CYBERSECURITY</span>
+<span class="marquee-item">// NETWORK ADMINISTRATION</span>
+<span class="marquee-item">// BUSINESS CONTINUITY (BCP/DRP)</span>
+<span class="marquee-item">// RISK MANAGEMENT</span>
+<span class="marquee-item">// CORPORATE SECURITY</span>
+<span class="marquee-item">// BACKEND &amp; DATABASES</span>
+<span class="marquee-item">// UML ARCHITECTURE</span>
+<span class="marquee-item">// AUTOMATION &amp; SCRIPTING</span>
+</div>
+</div>
+
+<!-- SOBRE MÍ + TERMINAL INTERACTIVA CON CLICKS -->
+<section id="sobre-mi" style="max-width: 1200px; margin: 0 auto; padding: 88px 32px">
+<p style="margin: 0 0 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5EEAD4;">01 // PERFIL PROFESIONAL</p>
+<h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 34px; margin: 0 0 32px 0; color: #E6EDF5;">Sobre mí</h2>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: center;">
+<div>
+<p style="font-size: 17px; color: #A9B6C8; line-height: 1.75; margin: 0 0 16px 0;">
+Apasionado por la tecnología, la infraestructura de redes y la seguridad de la información. Cuento con sólida experiencia operativa en gestión logística tecnológica, soporte en seguridad corporativa y continuidad de negocio.
+</p>
+<p style="font-size: 17px; color: #A9B6C8; line-height: 1.75; margin: 0;">
+Mi enfoque integra los fundamentos técnicos de la ciberseguridad con la resiliencia operativa de las organizaciones, garantizando la disponibilidad e integridad de los sistemas.
+</p>
+</div>
+
+<!-- Ventana tipo Terminal Linux Interactiva -->
+<div style="background: #0B121E; border: 1px solid #2A3A52; border-radius: 12px; overflow: hidden; box-shadow: 0 12px 30px rgba(0,0,0,0.4);">
+<div style="background: #131D2E; padding: 10px 16px; border-bottom: 1px solid #2A3A52; display: flex; align-items: center; justify-content: space-between;">
+<div style="display: flex; align-items: center; gap: 8px;">
+<span style="width: 11px; height: 11px; border-radius: 50%; background: #EF4444;"></span>
+<span style="width: 11px; height: 11px; border-radius: 50%; background: #F59E0B;"></span>
+<span style="width: 11px; height: 11px; border-radius: 50%; background: #10B981;"></span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #94A3B8; margin-left: 8px;">interactive_hud.sh</span>
+</div>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #5EEAD4; background: rgba(94,234,212,0.1); padding: 2px 6px; border-radius: 4px;">CLICKABLE HUD</span>
+</div>
+
+<div style="padding: 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.7; color: #CBD5E1;">
+<div style="color: #5EEAD4; margin-bottom: 10px;">// Haz clic en los botones para ejecutar comandos de sistema:</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+<button class="term-btn" onclick="runTerminalCommand('whoami')">./whoami</button>
+<button class="term-btn" onclick="runTerminalCommand('skills')">./check_skills</button>
+<button class="term-btn" onclick="runTerminalCommand('security')">./audit_sec</button>
+<button class="term-btn" onclick="runTerminalCommand('clear')">clear_screen</button>
+</div>
+<div id="terminalOutput" style="background: #070D17; padding: 12px; border-radius: 6px; border: 1px solid #1E2A3D; min-height: 90px; color: #5EEAD4;">
+&gt; Sistema listo. Haz clic en un botón superior para interactuar con la terminal...
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- FORMACIÓN -->
+<section id="formacion" style="max-width: 1200px; margin: 0 auto; padding: 80px 32px; border-top: 1px solid #1E2A3D">
+<p style="margin: 0 0 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5EEAD4;">02 // EDUCACIÓN</p>
+<h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 34px; margin: 0 0 32px 0; color: #E6EDF5;">Formación Académica</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+<div class="cy-card">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5EEAD4;">[ EN CURSO ]</span>
+<h3 style="color: #E6EDF5; margin: 10px 0 12px 0; font-family: 'Space Grotesk', sans-serif; font-size: 21px;">Ingeniería en Ciberseguridad</h3>
+<p style="color: #A9B6C8; font-size: 15px; margin: 0;">Formación universitaria enfocada en arquitectura de redes, defensa informática, criptografía, análisis de riesgos y continuidad del negocio (BCP/DRP).</p>
+</div>
+<div class="cy-card">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5EEAD4;">[ EXPERIENCIA OPERATIVA ]</span>
+<h3 style="color: #E6EDF5; margin: 10px 0 12px 0; font-family: 'Space Grotesk', sans-serif; font-size: 21px;">Seguridad Corporativa y Tecnología</h3>
+<p style="color: #A9B6C8; font-size: 15px; margin: 0;">Experiencia práctica en operaciones, despliegue de equipamiento tecnológico, control de accesos y protocolos de respuesta ante emergencias.</p>
+</div>
+</div>
+</section>
+
+<!-- CERTIFICACIONES CON TUS PDF REALES -->
+<section id="certificaciones" style="max-width: 1200px; margin: 0 auto; padding: 80px 32px; border-top: 1px solid #1E2A3D">
+<p style="margin: 0 0 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5EEAD4;">03 // CREDENCIALES VERIFICADAS</p>
+<h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 34px; margin: 0 0 12px 0; color: #E6EDF5;">Certificaciones y Diplomas</h2>
+<p style="color: #A9B6C8; font-size: 16px; margin: 0 0 36px 0;">Haz clic en cualquier credencial para abrir y visualizar el certificado oficial en una nueva pestaña.</p>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+
+<!-- 1. Curso de Ciberseguridad -->
+<div class="cy-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+<div>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5EEAD4;">// SEGURIDAD</span>
+<h3 style="color: #E6EDF5; margin: 8px 0 10px 0; font-family: 'Space Grotesk', sans-serif; font-size: 19px;">Curso de Ciberseguridad</h3>
+<p style="color: #A9B6C8; font-size: 14px; margin: 0;">Capacitación en protección de sistemas informáticos, prevención de brechas y defensa digital.</p>
+</div>
+<div>
+<a href="certificados/Curso de Clberseguridad.pdf" target="_blank" rel="noopener noreferrer" class="btn-pdf">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+ABRIR PDF
+</a>
+</div>
+</div>
+
+<!-- 2. Reparador de PC y Administrador de Redes -->
+<div class="cy-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+<div>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5EEAD4;">// HARDWARE Y REDES</span>
+<h3 style="color: #E6EDF5; margin: 8px 0 10px 0; font-family: 'Space Grotesk', sans-serif; font-size: 19px;">Reparador de PC y Administrador de Redes</h3>
+<p style="color: #A9B6C8; font-size: 14px; margin: 0;">Mantenimiento físico y lógico de equipos, ensamblaje y gestión de redes informáticas.</p>
+</div>
+<div>
+<a href="certificados/REPARADOR DE PC Y ADMINISTRADOR DE REDES.pdf" target="_blank" rel="noopener noreferrer" class="btn-pdf">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+ABRIR PDF
+</a>
+</div>
+</div>
+
+<!-- 3. Inglés por Inmersión -->
+<div class="cy-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+<div>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5EEAD4;">// IDIOMAS</span>
+<h3 style="color: #E6EDF5; margin: 8px 0 10px 0; font-family: 'Space Grotesk', sans-serif; font-size: 19px;">Inglés por Inmersión</h3>
+<p style="color: #A9B6C8; font-size: 14px; margin: 0;">Dominio avanzado del idioma inglés enfocado en comunicación profesional y técnica.</p>
+</div>
+<div>
+<a href="certificados/Ingles por Imersion.pdf" target="_blank" rel="noopener noreferrer" class="btn-pdf">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+ABRIR PDF
+</a>
+</div>
+</div>
+
+<!-- 4. Certificado Inteligencia Emocional -->
+<div class="cy-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+<div>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5EEAD4;">// DESARROLLO HUMANO</span>
+<h3 style="color: #E6EDF5; margin: 8px 0 10px 0; font-family: 'Space Grotesk', sans-serif; font-size: 19px;">Inteligencia Emocional</h3>
+<p style="color: #A9B6C8; font-size: 14px; margin: 0;">Gestión de emociones, liderazgo y habilidades blandas para entornos laborales colaborativos.</p>
+</div>
+<div>
+<a href="certificados/Certificado Inteligencia Emocional.pdf" target="_blank" rel="noopener noreferrer" class="btn-pdf">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+ABRIR PDF
+</a>
+</div>
+</div>
+
+<!-- 5. Introducción a bases de datos para backend -->
+<div class="cy-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+<div>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5EEAD4;">// DATOS Y BACKEND</span>
+<h3 style="color: #E6EDF5; margin: 8px 0 10px 0; font-family: 'Space Grotesk', sans-serif; font-size: 19px;">Bases de Datos para Desarrollo Backend</h3>
+<p style="color: #A9B6C8; font-size: 14px; margin: 0;">Diseño y manejo de estructuras de datos para el desarrollo de la capa lógica de aplicaciones.</p>
+</div>
+<div>
+<a href="certificados/Introducción a bases de datos para el desarrollo debackendun.pdf" target="_blank" rel="noopener noreferrer" class="btn-pdf">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+ABRIR PDF
+</a>
+</div>
+</div>
+
+<!-- 6. Introducción a las bases de datos -->
+<div class="cy-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+<div>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5EEAD4;">// FUNDAMENTOS DE DATOS</span>
+<h3 style="color: #E6EDF5; margin: 8px 0 10px 0; font-family: 'Space Grotesk', sans-serif; font-size: 19px;">Introducción a las Bases de Datos</h3>
+<p style="color: #A9B6C8; font-size: 14px; margin: 0;">Modelado relacional, consultas SQL y gestión íntegra de información empresarial.</p>
+</div>
+<div>
+<a href="certificados/Introducción a las bases de datosun.pdf" target="_blank" rel="noopener noreferrer" class="btn-pdf">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+ABRIR PDF
+</a>
+</div>
+</div>
+
+<!-- 7. Introducción a UML -->
+<div class="cy-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+<div>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5EEAD4;">// INGENIERÍA DE SOFTWARE</span>
+<h3 style="color: #E6EDF5; margin: 8px 0 10px 0; font-family: 'Space Grotesk', sans-serif; font-size: 19px;">Introducción a UML</h3>
+<p style="color: #A9B6C8; font-size: 14px; margin: 0;">Modelado de sistemas de software mediante diagramas unificados para arquitectura técnica.</p>
+</div>
+<div>
+<a href="certificados/Introducción a UML .pdf" target="_blank" rel="noopener noreferrer" class="btn-pdf">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+ABRIR PDF
+</a>
+</div>
+</div>
+
+<!-- 8. Manejador de Programas de Oficina e Internet -->
+<div class="cy-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+<div>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5EEAD4;">// OFIMÁTICA</span>
+<h3 style="color: #E6EDF5; margin: 8px 0 10px 0; font-family: 'Space Grotesk', sans-serif; font-size: 19px;">Manejador de Programas de Oficina e Internet</h3>
+<p style="color: #A9B6C8; font-size: 14px; margin: 0;">Dominio avanzado de herramientas ofimáticas, procesamiento de documentos y gestión web.</p>
+</div>
+<div>
+<a href="certificados/MANEJADOR DE PROGRAMAS DE OFICINA E INTERNET.pdf" target="_blank" rel="noopener noreferrer" class="btn-pdf">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+ABRIR PDF
+</a>
+</div>
+</div>
+
+<!-- 9. Representante Telefónico -->
+<div class="cy-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+<div>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5EEAD4;">// COMUNICACIÓN</span>
+<h3 style="color: #E6EDF5; margin: 8px 0 10px 0; font-family: 'Space Grotesk', sans-serif; font-size: 19px;">Representante Telefónico</h3>
+<p style="color: #A9B6C8; font-size: 14px; margin: 0;">Técnicas de atención al cliente, comunicación corporativa y soporte multicanal.</p>
+</div>
+<div>
+<a href="certificados/Representante telefonico.pdf" target="_blank" rel="noopener noreferrer" class="btn-pdf">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+ABRIR PDF
+</a>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="proyectos" style="max-width: 1200px; margin: 0 auto; padding: 80px 32px; border-top: 1px solid #1E2A3D">
+<p style="margin: 0 0 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5EEAD4;">04 // INVESTIGACIÓN Y PRÁCTICAS</p>
+<h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 34px; margin: 0 0 16px 0; color: #E6EDF5;">Proyectos y Experiencia</h2>
+<p style="font-size: 17px; color: #A9B6C8; max-width: 820px; line-height: 1.7; margin: 0 0 36px 0;">
+En esta sección presento proyectos académicos, técnicos y profesionales en los que he participado, así como iniciativas orientadas al aprendizaje, la aplicación de conocimientos y la mejora de procesos. Mi interés principal es continuar desarrollándome en ciberseguridad, tecnología, gestión de riesgos y seguridad de la información.
+</p>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+
+<!-- 1. Investigación académica -->
+<div class="cy-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+<div>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5EEAD4;">// PROYECTO ACADÉMICO</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; background: rgba(94,234,212,0.1); color: #5EEAD4; padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(94,234,212,0.3);">En desarrollo</span>
+</div>
+<h3 style="color: #E6EDF5; margin: 8px 0 12px 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px;">Uso de IA Generativa en Concienciación</h3>
+<p style="color: #A9B6C8; font-size: 14px; line-height: 1.6; margin: 0 0 16px 0;">
+Investigación académica sobre el uso de inteligencia artificial generativa en programas de concienciación ante ataques de ingeniería social.
+</p>
+</div>
+<div style="border-top: 1px solid #1E2A3D; padding-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #94A3B8; display: flex; flex-direction: column; gap: 4px;">
+<span><strong style="color: #CBD5E1;">Área:</strong> Ciberseguridad e IA</span>
+<span><strong style="color: #CBD5E1;">Institución:</strong> UNICARIBE</span>
+</div>
+</div>
+
+<!-- 2. Laboratorio de ciberseguridad -->
+<div class="cy-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+<div>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5EEAD4;">// LABORATORIO TÉCNICO</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; background: rgba(94,234,212,0.1); color: #5EEAD4; padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(94,234,212,0.3);">En desarrollo</span>
+</div>
+<h3 style="color: #E6EDF5; margin: 8px 0 12px 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px;">Entorno de Prácticas y Evaluación</h3>
+<p style="color: #A9B6C8; font-size: 14px; line-height: 1.6; margin: 0 0 16px 0;">
+Objetivo: Practicar reconocimiento de redes y evaluación básica de seguridad en entornos autorizados.
+</p>
+</div>
+<div style="border-top: 1px solid #1E2A3D; padding-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #94A3B8; display: flex; flex-direction: column; gap: 4px;">
+<span><strong style="color: #CBD5E1;">Herramientas:</strong> Kali Linux, VirtualBox, Nmap</span>
+<span><strong style="color: #CBD5E1;">Área:</strong> Redes y Fundamentos de Ciberseguridad</span>
+</div>
+</div>
+
+<!-- 3. Gestión de seguridad y procesos -->
+<div class="cy-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+<div>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5EEAD4;">// EXPERIENCIA PROFESIONAL</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; background: rgba(16,185,129,0.1); color: #10B981; padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(16,185,129,0.3);">Activo</span>
+</div>
+<h3 style="color: #E6EDF5; margin: 8px 0 12px 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px;">Gestión de Seguridad y Procesos</h3>
+<p style="color: #A9B6C8; font-size: 14px; line-height: 1.6; margin: 0 0 16px 0;">
+Documentación y apoyo a procesos de seguridad corporativa, organization de procedimientos y materiales de preparación ante emergencias.
+</p>
+</div>
+<div style="border-top: 1px solid #1E2A3D; padding-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #94A3B8; display: flex; flex-direction: column; gap: 4px;">
+<span><strong style="color: #CBD5E1;">Área:</strong> Seguridad institucional y gestión operativa</span>
+<span><strong style="color: #CBD5E1;">Rol:</strong> Experiencia profesional</span>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" style="max-width: 1200px; margin: 0 auto; padding: 80px 32px 120px; border-top: 1px solid #1E2A3D">
+<p style="margin: 0 0 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5EEAD4;">05 // CONEXIÓN ENCRIPTADA</p>
+<h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 34px; margin: 0 0 24px 0; color: #E6EDF5;">Contacto</h2>
+<p style="font-size: 17px; color: #A9B6C8; margin-bottom: 28px; max-width: 600px;">¿Buscas colaborar en proyectos de ciberseguridad, seguridad corporativa o tecnología? Establece comunicación directa:</p>
+<div style="display: flex; flex-wrap: wrap; gap: 16px;">
+<a href="mailto:carlosmanuel0403@gmail.com" class="cy-glow" style="background: #5EEAD4; color: #070D17; text-decoration: none; font-weight: 600; font-size: 15px; padding: 14px 28px; border-radius: 8px; display: inline-flex; align-items: center;">carlosmanuel0403@gmail.com</a>
+<a href="https://sites.google.com/view/carlos-manuel-vsquez-martnez-p/p%C3%A1gina-principal" target="_blank" rel="noopener noreferrer" style="border: 1px solid #2A3A52; background: rgba(19,29,46,0.6); color: #E6EDF5; text-decoration: none; font-weight: 500; font-size: 15px; padding: 14px 28px; border-radius: 8px; display: inline-flex; align-items: center;">Ver versión en Google Sites</a>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer style="border-top: 1px solid #1E2A3D; background: #070D17; padding: 32px; text-align: center; color: #94A3B8; font-family: 'JetBrains Mono', monospace; font-size: 13px;">
+<p style="margin: 0;">[ © 2026 Carlos Manuel Vásquez Martínez // Todos los derechos reservados ]</p>
+</footer>
+
+</div>
+
+<!-- SCRIPTS DE ANIMACIÓN MATRIX Y TERMINAL INTERACTIVA -->
+<script>
+// Efecto Matrix Digital Rain
+(function(){
+  const canvas = document.getElementById('matrixCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let width, height, columns, drops;
+  const chars = '01ABCDEF01019F3A7C';
+  const fontSize = 14;
+
+  function init(){
+    width = canvas.width = canvas.offsetWidth;
+    height = canvas.height = canvas.offsetHeight;
+    columns = Math.floor(width / fontSize);
+    drops = Array(columns).fill(1);
+  }
+
+  function draw(){
+    ctx.fillStyle = 'rgba(7, 13, 23, 0.08)';
+    ctx.fillRect(0, 0, width, height);
+    ctx.fillStyle = '#5EEAD4';
+    ctx.font = fontSize + 'px "JetBrains Mono", monospace';
+
+    for(let i = 0; i < drops.length; i++){
+      const text = chars.charAt(Math.floor(Math.random() * chars.length));
+      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+      if(drops[i] * fontSize > height && Math.random() > 0.975){
+        drops[i] = 0;
+      }
+      drops[i]++;
+    }
+  }
+
+  init();
+  window.addEventListener('resize', init);
+  setInterval(draw, 45);
+})();
+
+// Lógica de los botones interactivos de la Terminal
+function runTerminalCommand(cmd) {
+  const output = document.getElementById('terminalOutput');
+  if(!output) return;
+  
+  if(cmd === 'whoami'){
+    output.innerHTML = '&gt; user: Carlos Manuel Vásquez Martínez<br>&gt; role: Auxiliar de Operaciones &amp; Ing. Ciberseguridad';
+  } else if(cmd === 'skills'){
+    output.innerHTML = '&gt; [OK] Seguridad Corporativa &amp; Redes<br>&gt; [OK] BCP / DRP &amp; Gestión de Riesgos<br>&gt; [OK] Python, Next.js &amp; Bases de Datos';
+  } else if(cmd === 'security'){
+    output.innerHTML = '&gt; Scanning firewall... [SECURE]<br>&gt; Encriptación SSL/TLS activa.<br>&gt; Threat level: 0% (Clean environment).';
+  } else if(cmd === 'clear'){
+    output.innerHTML = '&gt; Pantalla limpia. Sistema operativo seguro.';
+  }
+}
+</script>
+</body>
+</html>
